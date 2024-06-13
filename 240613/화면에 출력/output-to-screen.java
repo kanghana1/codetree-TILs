@@ -29,7 +29,7 @@ public class Main {
             if (screen == goal) return count;
 
             // copy
-            if (!isVisited[screen][screen]) { // 복사하면 화면문자수 == 클립보드 문자수
+            if (clipboard != screen && !isVisited[screen][screen]) { // 복사하면 화면문자수 == 클립보드 문자수
                 isVisited[screen][screen] = true;
                 queue.add(new int[] {screen, screen, count + 1});
             }
