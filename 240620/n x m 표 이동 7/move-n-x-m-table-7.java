@@ -61,7 +61,7 @@ public class Main {
                 int ny = cy + dy[i];
                 int nx = cx + dx[i];
 
-                if (canMove(ny, nx)) {
+                if (canMove(ny, nx, i)) {
                     isVisit[ny][nx] = true;
                     queue.add(new int[]{ny, nx, count + 1});
                 }
@@ -71,7 +71,7 @@ public class Main {
         return -1; // 이동할 수 없는 경우
     }
 
-    public static boolean canMove(int y, int x) {
+    public static boolean canMove(int y, int x, int idx) {
         if (y < 0 || y + h > rNum || x < 0 || x + w > cNum) {
             return false;
         }
@@ -79,12 +79,25 @@ public class Main {
             return false;
         }
 
-        // 직사각형 영역 검사
-        for (int i = y; i < y + h; i++) {
-            for (int j = x; j < x + w; j++) {
-                if (maze[i][j] == 1) {
-                    return false;
-                }
+
+        if (idx == 0) { // 북
+            for (int i = x ; i < x + w ; ++i) {
+                if (maze[y][i] == 1) return false;
+            }
+        } 
+        else if (idx == 1) { // 서
+            for (int i = y ; i < y + h ; ++i) {
+                if (maze[i][x + w - 1] == 1) return false;
+            }
+        } 
+        else if (idx == 2) { // 남
+            for (int i = x ; i < x + w ; ++i) {
+                if (maze[y + h - 1][i] == 1) return false;
+            }    
+        } 
+        else if (idx == 3) {   // 동 
+            for (int i = y ; i < y + h ; ++i) {
+                if (maze[i][x] == 1) return false;
             }
         }
 
