@@ -81,22 +81,22 @@ public class Main {
 
 
         if (idx == 0) { // 북
-            for (int i = x ; i < x + w ; ++i) {
+            for (int i = x ; i < x + w ; i++) {
                 if (maze[y][i] == 1) return false;
             }
         } 
         else if (idx == 1) { // 서
-            for (int i = y ; i < y + h ; ++i) {
+            for (int i = y ; i < y + h ; i++) {
                 if (maze[i][x + w - 1] == 1) return false;
             }
         } 
         else if (idx == 2) { // 남
-            for (int i = x ; i < x + w ; ++i) {
+            for (int i = x ; i < x + w ; i++) {
                 if (maze[y + h - 1][i] == 1) return false;
             }    
         } 
         else if (idx == 3) {   // 동 
-            for (int i = y ; i < y + h ; ++i) {
+            for (int i = y ; i < y + h ; i++) {
                 if (maze[i][x] == 1) return false;
             }
         }
