@@ -13,7 +13,7 @@ public class Main {
         int day = 0;
         for (int i = m1 ; i < m2 ; i++) {
             if (i == 2) day += 28;
-            else if ((i % 2 == 0 && i <= 6) || (i % 2 == 1 && i >= 7)) day += 30;
+            else if ((i % 2 == 0 && i <= 6) || (i % 2 == 1 && i > 7)) day += 30;
             else day += 31; 
         }
         day -= d1;
