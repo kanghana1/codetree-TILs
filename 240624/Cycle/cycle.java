@@ -14,11 +14,15 @@ public class Main {
         int cnt = 0;
         while (true) {
             result = (result * N) % P;
+            cnt++;
             if (lst.contains(result)) break;
             lst.add(result);
-            cnt++;
+
         }
 
+        for (int i = 0 ; i < lst.size() ; i++) {
+            if (lst.get(i) == result) cnt = cnt - i;
+        }
         System.out.println(cnt);
     }
 }
