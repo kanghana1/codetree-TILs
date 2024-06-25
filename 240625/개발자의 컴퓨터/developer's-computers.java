@@ -5,30 +5,29 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
+        int minStart = 1000;
+        int maxEnd = 0;
         for (int i = 0 ; i < N ; i++) {
             StringTokenizer st = new StringTokenizer(br.readLine());
-            lst.add(new PC(Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken())));
+            int start = Integer.parseInt(st.nextToken());
+            int end = Integer.parseInt(st.nextToken());
+            int num = Integer.parseInt(st.nextToken());
+
+            if (start < minStart) minStart = start;
+            if (end > maxEnd) maxEnd = end;
+
+            lst.add(new PC(start, end, num));
         }
 
+        int[] arr = new int[maxEnd - minStart + 1];
 
-        int cnt = lst.get(0).numOfPc;
-        boolean overlap = true;
-        for (int i = 1 ; i < N ; i++) {
-            overlap = true;
-            for (int j = 0 ; j < i ; j++) {
-                if (lst.get(i).start > lst.get(j).end || lst.get(i).end < lst.get(j).start) { // 안 겹침
-                    overlap = false;
-                    if (lst.get(j).numOfPc < lst.get(i).numOfPc) {
-                        cnt = cnt - lst.get(j).numOfPc + lst.get(i).numOfPc;
-                    }
-
-                } 
-            }
-            if (overlap) {
-                cnt += lst.get(i).numOfPc;
+        for (int i = 0 ; i < N ; i++) {
+            for (int j = lst.get(i).start ; j <= lst.get(i).end ; j++) {
+                arr[j - minStart] += lst.get(i).numOfPc;
             }
         }
-        System.out.println(cnt);
+
+        System.out.println(Arrays.stream(arr).max().getAsInt());
     }
 
     static class PC {
