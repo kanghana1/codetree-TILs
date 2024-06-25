@@ -21,8 +21,8 @@ public class Main {
                     if (lst.get(j).numOfPc < lst.get(i).numOfPc) {
                         cnt = cnt - lst.get(j).numOfPc + lst.get(i).numOfPc;
                     }
-                    break;
-                }
+
+                } 
             }
             if (overlap) {
                 cnt += lst.get(i).numOfPc;
