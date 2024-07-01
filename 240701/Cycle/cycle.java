@@ -23,7 +23,6 @@ public class Main {
         for (int i = 0 ; i < lst.size() ; i++) {
             if (lst.get(i) == result) {
                 cnt = cnt - i;
-                break;
             }
         }
         System.out.println(cnt);
