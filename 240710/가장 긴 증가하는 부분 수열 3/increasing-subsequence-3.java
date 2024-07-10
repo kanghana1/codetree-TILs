@@ -21,6 +21,6 @@ public class Main {
             }
             result = Math.max(dp[i], result);
         }
-        System.out.println(dp[n - 1]);
+        System.out.println(result);
     }
 }
